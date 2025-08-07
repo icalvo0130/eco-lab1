@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LAB 1 - Random Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header-controls">
+        <h1>Obten informacion Random</h1>
+        
+        <div class="controls-container">
+            <div class="search-section">
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Buscar anime..." />
+                    <input type="number" id="limitInput" min="1" max="25" value="10" placeholder="Límite">
+                    <button id="searchBtn" class="search-btn">🔍Buscar</button>
+                </div>
+                <div class="filter-container">
+                    <button class="filter-btn active" data-filter="popular">Populares</button>
+                    <button class="filter-btn" data-filter="top-rated">Mejor Puntuados</button>
+                    <button class="filter-btn" data-filter="recent">Recientes (2020+)</button>
+                    <button class="filter-btn" data-filter="classic">Clásicos (1990-2010)</button>
+                    <button class="filter-btn" data-filter="high-score">Puntuación 8+</button>
+                </div>
+            </div>
+            <div class="api-controls">
+                <button id="btn1" class="control-btn">Facts About Cats</button>
+                <button id="btn2" class="control-btn">Random Activity</button>
+                <button id="btn3" class="control-btn">Random Name</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="container">
+        <div id="cat-fact" class="content-section">
+            <div id="fact-text"></div>
+        </div>
+        <div id="activity" class="content-section">
+            <div id="activity-text"></div>
+        </div>
+        <div id="user" class="content-section">
+            <div id="user-text"></div>
+        </div>
+        <div id="results"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

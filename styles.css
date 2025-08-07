@@ -1,0 +1,452 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+/* Header fijo con controles principales */
+.header-controls {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+h1 {
+    text-align: center;
+    color: #4a5568;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 25px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor de controles superiores */
+.controls-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Sección de búsqueda completa */
+.search-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Contenedor de búsqueda */
+.search-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* Controles de API */
+.api-controls {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Barra de búsqueda */
+#searchInput {
+    flex: 1;
+    padding: 15px 20px;
+    border: 2px solid #e2e8f0;
+    border-radius: 50px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+    background: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Input de límite */
+#limitInput {
+    width: 80px;
+    padding: 15px 10px;
+    border: 2px solid #e2e8f0;
+    border-radius: 25px;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+    background: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Botón de búsqueda */
+.search-btn {
+    padding: 15px 25px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+}
+
+.search-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Contenedor de filtros */
+.filter-container {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Botones de filtro */
+.filter-btn {
+    padding: 8px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 20px;
+    background: white;
+    color: #4a5568;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: capitalize;
+}
+
+.filter-btn:hover {
+    border-color: #667eea;
+    color: #667eea;
+    transform: translateY(-1px);
+}
+
+.filter-btn.active {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    border-color: #667eea;
+}
+
+#searchInput:focus,
+#limitInput:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    transform: translateY(-2px);
+}
+
+#searchInput::placeholder,
+#limitInput::placeholder {
+    color: #a0aec0;
+}
+
+/* Estilos de carga */
+.loading-text {
+    color: #667eea !important;
+    font-style: italic;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.loading-text::after {
+    content: "●●●";
+    animation: loading 1.5s infinite;
+    color: #667eea;
+}
+
+@keyframes loading {
+    0% { opacity: 0.2; }
+    20% { opacity: 1; }
+    40% { opacity: 0.2; }
+    60% { opacity: 1; }
+    80% { opacity: 0.2; }
+    100% { opacity: 1; }
+}
+
+/* Botones principales */
+.control-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+#btn1 {
+    background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+    color: white;
+}
+
+#btn2 {
+    background: linear-gradient(45deg, #4ecdc4, #44a08d);
+    color: white;
+}
+
+#btn3 {
+    background: linear-gradient(45deg, #a8edea, #fed6e3);
+    color: #333;
+}
+
+.control-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.control-btn:active {
+    transform: translateY(-1px);
+}
+
+/* Contenedor principal con margen superior para el header fijo */
+#container {
+    margin-top: 250px;
+    padding: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Secciones de contenido */
+.content-section {
+    background: rgba(255, 255, 255, 0.95);
+    margin: 30px 0;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.content-section:hover {
+    transform: translateY(-5px);
+}
+
+/* Textos de contenido */
+#fact-text,
+#activity-text,
+#user-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #4a5568;
+    min-height: 24px;
+    padding: 20px;
+    background: #f7fafc;
+    border-radius: 15px;
+    border-left: 4px solid #667eea;
+    margin-top: 15px;
+}
+
+/* Botones de eliminar */
+button[id^="delete-btn"] {
+    background: linear-gradient(45deg, #ff4757, #c44569);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+button[id^="delete-btn"]:hover {
+    background: linear-gradient(45deg, #c44569, #ff4757);
+    transform: scale(1.05);
+}
+
+/* Resultados de búsqueda de anime */
+#results {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+}
+
+#results > div {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+#results > div:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Información del anime mejorada */
+.anime-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin: 15px 0;
+    padding: 15px;
+    background: #f8fafc;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+}
+
+.anime-info p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.synopsis {
+    line-height: 1.6;
+    color: #4a5568;
+    text-align: justify;
+    margin-top: 15px;
+}
+
+#results h3 {
+    color: #667eea;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+    text-align: center;
+}
+
+#results img {
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    margin: 0 auto 15px auto;
+    display: block;
+}
+
+#results img:hover {
+    transform: scale(1.05);
+}
+
+#results p {
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+#results strong {
+    color: #2d3748;
+}
+
+#results hr {
+    border: none;
+    height: 2px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 1px;
+    margin-top: 20px;
+}
+
+/* Mensaje de carga y no resultados */
+#results p:only-child {
+    text-align: center;
+    color: #718096;
+    font-style: italic;
+    font-size: 1.1rem;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    border: 2px dashed #e2e8f0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .search-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .search-container input,
+    .search-btn {
+        width: 100%;
+    }
+    
+    .api-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .filter-container {
+        gap: 6px;
+    }
+    
+    .filter-btn {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+    
+    .header-controls {
+        padding: 15px;
+    }
+    
+    #container {
+        margin-top: 400px;
+        padding: 15px;
+    }
+    
+    .control-btn {
+        padding: 12px 20px;
+        font-size: 13px;
+        width: 100%;
+    }
+    
+    #results {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    #results > div {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    #container {
+        margin-top: 450px;
+    }
+    
+    .content-section {
+        padding: 20px;
+        margin: 20px 0;
+    }
+    
+    #results img {
+        width: 100%;
+        height: auto;
+    }
+}
